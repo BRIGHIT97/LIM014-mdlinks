@@ -11,7 +11,7 @@ const route = "README.md";
   const routeExist = (route) => {
   //   console.log(fs.existsSync(route));
     if (fs.existsSync(route)) {
-  //   // console.log ('la ruta existe')
+      // console.log ('la ruta existe')
     return true;
   }
       // console.log('la ruta no existe')
@@ -31,7 +31,7 @@ const route = "README.md";
   //     console.log('La ruta fue convertida a absoluta: ')
      return path.resolve(route);
     }
-  //     console.log(getAbsoluteRoute(route))
+      // console.log(getAbsoluteRoute(route))
 //
 
     // // const getAbsoluteRoute = (route) => (path.isAbsolute(route) ? route : path.resolve(route));
@@ -39,7 +39,7 @@ const route = "README.md";
 
  // 3. VERIFICACIÓN DE ARCHIVOS  / 
   const isFile = (route) => fs.statSync(route).isFile();
-  // // console.log(isFile(route));
+  // console.log(isFile(route));
 
       // // const checkFile = (route) => {
       // //   const stats = fs.lstatSync(route);
@@ -56,7 +56,7 @@ const route = "README.md";
    // 3.2 SI ES DIRECTORIO, LISTAR A TODO LOS ARCHIVOS
         const showAllFiles = (route) => {
           let arrFiles = [];
-          if (checkFile(route)) {
+          if (isFile(route)) {
             arrFiles.push(route);
           } else {
             const readDirectory = fs.readdirSync(route);
