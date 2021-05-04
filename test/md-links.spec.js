@@ -1,10 +1,9 @@
-const path = require('path');
+/* const path = require('path');
 
 const cwd = process.cwd();
-const route = require('../src/index.js');
+const route = require('../src/index.js'); */
 
 // const mdLinks = require('../');
-
 
 // describe('mdLinks', () => {
 
@@ -13,5 +12,3 @@ const route = require('../src/index.js');
 //   });
 
 // });
-
-

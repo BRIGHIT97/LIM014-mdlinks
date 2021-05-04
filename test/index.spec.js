@@ -1,27 +1,30 @@
-//const path = require('path');
-const route = require('../src/index');
+// const path = require('path');
+const fs = require('fs');
+const methods = require('../src/index.js');
+
+const routePath = 'README.md';
+const routePath1 = 'README1.md';
 // const {routeExist}= require('../scr/index.js')
-//1. EXISTENCIA DE LA RUTA / EXISTENCE OF THE ROUTE
-describe('EXISTENCIA DE LA RUTA',() => {
+// 1. EXISTENCIA DE LA RUTA / EXISTENCE OF THE ROUTE
+describe('EXISTENCIA DE LA RUTA', () => {
   it('deberia retornar true si la Ruta Existe', () => {
-    expect(route.existsSync(route)).toBe(true);
+    expect(fs.existsSync(routePath)).toBe(true);
   });
   it('deberia retornar false si la Ruta NO Existe', () => {
-    expect(route.existsSync(route)).toBe(false);
+    expect(fs.existsSync(routePath1)).toBe(false);
   });
 });
-
 // 2. RUTAS ABSOLUTAS / ABSOLUTE ROUTES
 const rutaRelativa = '.';
-const rutaAbsoluta = 'D:\\bri-programacion\\LABORATORIA\\3er proyecto\\LIM014-mdlinks';
+const rutaAbsoluta = `${process.cwd()}`;
 describe('Obtener rutas absolutas mediante ISABSOLUTEPATH', () => {
   it('Debería ser una función', () => {
-    expect(typeof isAbsolutePath).toBe('function');
+    expect(typeof methods.getAbsoluteRoute).toBe('function');
   });
   it('Debería convertir ruta relativa a ruta absoluta', () => {
-    expect(isAbsolutePath(rutaRelativa)).toEqual(rutaAbsoluta);
+    expect(methods.getAbsoluteRoute(rutaRelativa)).toEqual(rutaAbsoluta);
   });
   it('Debería retornar ruta absoluta ', () => {
-    expect(isAbsolutePath(rutaAbsoluta)).toEqual('D:\\bri-programacion\\LABORATORIA\\3er proyecto\\LIM014-mdlinks');
+    expect(methods.getAbsoluteRoute(rutaAbsoluta)).toEqual(`${process.cwd()}`);
   });
 });

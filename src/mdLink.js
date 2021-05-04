@@ -1,8 +1,8 @@
-const route = require('./index.js');
 const chalk = require('chalk');
+const fs = require('fs');
 const { validateLinks } = require('./validate');
 const { getAbsoluteRoute } = require('./index');
-const { getLinksMd} = require('./index');
+const { getLinksMd } = require('./index');
 
 const mdLinks = (route, options) => {
   const promise = new Promise((resolve, reject) => {
@@ -18,8 +18,11 @@ const mdLinks = (route, options) => {
   });
   return promise;
 };
-mdLinks(route, { validate: false })
-.then((res) => console.log(res))
-.catch(err => console.log(err));
+
+const routePath = 'README.md';
+
+mdLinks(routePath, { validate: false })
+  .then((res) => console.log(res))
+  .catch((err) => console.log(err));
 
 module.exports = { mdLinks };
