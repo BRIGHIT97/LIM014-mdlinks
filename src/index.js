@@ -113,7 +113,7 @@ const route = "README.md";
     });
     return arrayofLinks;
   };
-  console.log(getLinksMd(route));
+  // console.log(getLinksMd(route));
 
 
   module.exports = {

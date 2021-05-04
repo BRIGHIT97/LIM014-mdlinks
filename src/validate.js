@@ -27,7 +27,7 @@ const validateLinks = (route) => {
   return Promise.all(arrLinksPromises);
 };
 
- validateLinks('src/prueba1.md').then((res) => console.log(res));
+//  validateLinks('src/prueba1.md').then((res) => console.log(res));
 
 module.exports = {
   validateLinks,

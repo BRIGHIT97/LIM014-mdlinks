@@ -58,3 +58,31 @@ describe('FUNCIÓN FILTRAR TODO LOS ARCHIVOS CON EXTENSIÓN .MD', () => {
 //   });
 
 // });
+
+
+mdLinks
+
+const mdLinks = (rute, option = { validate: false }) => new Promise((resolve, reject) => {
+  const rutaAbsoluta = pathIsAbsolute(rute);
+  const error = 'ERROR';
+  const validatePath = validateIfPathExists(rutaAbsoluta);
+  if (validatePath === true) {
+    if (isDir(rutaAbsoluta) === true) {
+      const dataMd = readDir(rutaAbsoluta);
+      if (option.validate === false) {
+        resolve(getLinks(dataMd));
+      } else {
+        const links = Promise.all(linksValidate(dataMd));// validamos si el link es válido
+        resolve(links).flat();
+      }
+    } else if (extMD(rutaAbsoluta) === '.md') {
+      if (option.validate === false) {
+        const saveLinks = getLinks([rutaAbsoluta]);
+        resolve(saveLinks);
+      } else {
+        const links = Promise.all(linksValidate([rutaAbsoluta]));
+        resolve(links);
+      }
+    }
+  } reject(error);
+});
